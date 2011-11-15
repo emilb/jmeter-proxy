@@ -1,3 +1,4 @@
+jmeter-*.xml
 *.class
 .settings
 .project

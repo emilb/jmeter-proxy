@@ -1,0 +1,47 @@
+<configuration>
+
+	<contextName>JMeter proxy</contextName>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator> <!-- defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator -->
+				<expression>marker == null</expression>
+			</evaluator>
+			<OnMatch>ACCEPT</OnMatch>
+			<OnMismatch>DENY</OnMismatch>
+		</filter>
+
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} %-5level %logger{0} - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+
+	<appender name="JMETER_LOG"
+		class="ch.qos.logback.core.FileAppender">
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator> <!-- defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator -->
+				<expression>marker != null &amp;&amp;
+					marker.getName().equals("JMETER")</expression>
+			</evaluator>
+			<OnMatch>ACCEPT</OnMatch>
+			<OnMismatch>DENY</OnMismatch>
+		</filter>
+
+		<file>jmeter-${bySecond}.xml</file>
+		<encoder>
+			<pattern>%msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<logger name="se" level="DEBUG" />
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="JMETER_LOG" />
+	</root>
+
+</configuration>
+

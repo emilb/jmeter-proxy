@@ -1,0 +1,35 @@
+#############################################################################
+#
+#	jmeter-proxy	
+#
+#	A small proxy that logs an embryo of a JMeter test suite.
+#
+#	Usage:
+#	>java -jar jmeter-proxy-1.0.jar
+#
+#	Option                          Description                            
+#	------                          -----------                            
+#	-?                              show help                              
+#	-h <hosts>                      Only log requests designated to any of 
+#	                                  the specified hosts                  
+#	-n <name>                       name of testcase (default: testcase)   
+#	-p <Integer: port>              proxy port (default: 8080)             
+#	-u <uris>                       Only log requests with URIs that       
+#	                                  contain any of the specified values 
+#
+#############################################################################
+
+
+Assembly instructions:
+
+>mvn clean package
+
+The assembled package is in target/simple-proxy-1.0-bundle.zip
+
+
+Dependencies:
+
+littleproxy http://www.littleshoot.org/littleproxy/
+jopt-simple http://pholser.github.com/jopt-simple/
+freemarker  http://freemarker.org/
+logback     http://logback.qos.ch/

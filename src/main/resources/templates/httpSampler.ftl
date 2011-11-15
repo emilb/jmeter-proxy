@@ -30,7 +30,7 @@
   <stringProp name="HTTPSampler.response_timeout"></stringProp>
   <stringProp name="HTTPSampler.protocol"></stringProp>
   <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-  <stringProp name="HTTPSampler.path">${path}</stringProp>
+  <stringProp name="HTTPSampler.path">${r"${CONTEXT}"}${path}</stringProp>
   <stringProp name="HTTPSampler.method">${method}</stringProp>
   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
